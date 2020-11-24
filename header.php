@@ -10,7 +10,7 @@
 <body>
 	<div class = "navbar">
 		<ul>
-			<li><a href="../index.php">Home</a></li>
+			<li><a href="index.php">Home</a></li>
 			<li><a href="admin/login.php">Admin</a></li>
 			<li><a href="user/login.php">User</a></li>
 			<li><a href="user/mine_register.php">SignUp</a></li>
