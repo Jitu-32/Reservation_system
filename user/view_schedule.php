@@ -24,7 +24,8 @@ include("../dbconnect.php");
 
 //$result = mysql_query("SELECT * FROM trains");
 mysqli_select_db($conn,"$db_name")or die("cannot select DB");
-$sql="SELECT * FROM trains";
+$train_date = date("Y-m-d");
+$sql="SELECT * FROM trains WHERE date > '$train_date'";
 
 $result=mysqli_query($conn,$sql) or trigger_error(mysql_error.$sql);
  

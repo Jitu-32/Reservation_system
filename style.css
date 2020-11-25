@@ -1,5 +1,9 @@
 body{
     background-color: #595d5e;
+    background-image: url('src/train.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
 }
 .navbar{
     background-color: black;
