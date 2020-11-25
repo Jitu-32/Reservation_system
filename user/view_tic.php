@@ -80,6 +80,14 @@ echo "</table>";
  
 
 ?>
+
+<div class="forms">
+        <form action="view_tic.php" method="post">
+            PNR : <input type="number" name="pnr" required placeholder = "Enter Your PNR"><br>
+            <input type="submit" value="Submit" name="Submit">
+        </form>
+</div>
+
 <?php
     include('footer.php');
 ?>
