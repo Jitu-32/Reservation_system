@@ -14,14 +14,9 @@ if(isset($_POST['pnr']))
     $pnr = stripslashes($pnr);
     $pnr = htmlspecialchars($pnr);
         
-    //echo $pnr;
-    $sql = "SELECT * FROM bookings WHERE pnr = '$pnr'";
-    $train_detail = mysqli_query($conn,$sql) ;
-    $row = mysqli_fetch_array($train_detail);
-    echo "    PNR      :  " . $row[0] . "<br>";
-    echo "Train number :  " . $row[1] . "<br>";
-    echo "   Date      :  " . $row[2] . "<br><br>";
-    echo "The details are :  <br>";
+    echo $pnr;
+    // $sql = "SELECT * FROM bookings WHERE pnr = '$pnr";
+    // $train_detail = mysqli_query($conn,$sql) or trigger_error(mysql_error.$sql);
 
     $query  =  "SELECT * FROM ticket WHERE pnr = '$pnr'";
     $result = mysqli_query($conn,$query) or trigger_error(mysql_error.$query);
@@ -52,13 +47,12 @@ if(isset($_POST['pnr']))
 						<td><?php echo $row[2] ?></td>
 						<td><?php echo $row[3] ?></td>
 						<td><?php echo $row[4] ?></td>
-						<td><?php echo $row[6] ?></td>
+						<td><?php echo $row[5] ?></td>
+                        <td><?php echo $row[6] ?></td>
                         <td><?php echo $row[7] ?></td>
-                        <td><?php echo $row[5] ?></td>
 					</tr>
 <?php } ?>
 				</table>
-                <br><br><br>
 <?php } ?>	
 			
     <div class="forms">
