@@ -272,7 +272,7 @@
     <div class="forms">
         <form action="booknow.php" method="post">
             Train Number : <input type="number" name="train_no" placeholder = "Enter train number"><br>
-            Train Date   : <input type="date" name="train_date" placeholder = "Boarding Date"> <br>
+            Train Date   : <input type="date" name="train_date" id = "train_date" placeholder = "Boarding Date"> <br>
             No. of Passengers : <input type="number" name="P_num" placeholder = "Enter no. of passengers"> <br>
             Coach Preferences : <input type="text" name="train_coach" placeholder = "Enter coach AC or Sleeper"> <br><br>
             Passenger1 Name : <input type="text" name="name1" placeholder = "Enter name"><br>
@@ -292,6 +292,41 @@
             Passenger5 Gender : <input type="text" name="gender5" placeholder = "Male or Female"><br><br>
             <input type="submit" value="Submit" name="Submit">
         </form>
+
+        <script> var today = new Date();
+        
+        
+            today.setDate(today.getDate() );
+            var maxi = today;
+            var dd = today.getDate() ;
+            var mm = today.getMonth()+1; //January is 0!
+            var yyyy = today.getFullYear();
+            if(dd<10){
+                    dd='0'+dd
+                } 
+                if(mm<10){
+                    mm='0'+mm
+                } 
+
+            today = yyyy+'-'+mm+'-'+dd; 
+            document.getElementById("train_date").setAttribute("min", today);
+            
+            maxi.setDate(maxi.getDate() + 14);
+            dd = maxi.getDate() ;
+            mm = maxi.getMonth()+1; //January is 0!
+            yyyy = maxi.getFullYear();
+            if(dd<10){
+                    dd='0'+dd
+                } 
+                if(mm<10){
+                    mm='0'+mm
+                } 
+
+            maxi = yyyy+'-'+mm+'-'+dd; 
+
+            //document.getElementById("train_date").setAttribute("max", maxi);
+
+        </script>
 
         <form action="booknow.php" method = "post">
             <input type="submit" value="Logout" name="Logout">
