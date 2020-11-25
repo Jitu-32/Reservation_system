@@ -26,7 +26,8 @@
                 VALUES ('$tr_no','$tr_name','$src','$dest','$tr_date','$sl_seats','$ac_seats','$sl_seats','$ac_seats')";
 
         if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
+        //echo "New record created successfully";
+            header("location:../admin/train_added.php");
         }
         else {
         echo "Error: " . $sql . "<br>" . $conn->error;
@@ -34,12 +35,12 @@
         $conn->close();
     }
 
-    if(isset($_POST["Logout"])){
-        session_unset();
-        session_destroy();
-        setcookie(PHPSESSID,session_id(),time()-1);
-	    header("location:../index.php");
-    }
+    // if(isset($_POST["Logout"])){
+    //     session_unset();
+    //     session_destroy();
+    //     setcookie(PHPSESSID,session_id(),time()-1);
+	//     header("location:../index.php");
+    // }
  
     //$today = date("Y-m-d<br>", time());
 	//echo $today;
@@ -47,7 +48,7 @@
 
 
 <div class="forms">
-    <form action="admin_home.php" method="post">
+    <form action="add_train.php" method="post">
 
         Train Number : <input type="number" name="train_no" required placeholder = "Enter train number"><br>
         Name : <input type="text" name="train_name" required placeholder = "Enter train name"><br>
@@ -94,9 +95,9 @@
 
     </script>
 
-    <form action="admin_home.php" method = "post">
+    <!-- <form action="admin_home.php" method = "post">
         <input type="submit" value="Logout" name="Logout">
-    </form>
+    </form> -->
 
 </div>
 
