@@ -19,10 +19,10 @@
 
 
             // Train exist or not
-            $train_exist    = "SELECT * FROM trains WHERE Train_no = '$train_num' and date= '$train_date' ";
-            $res         =  mysqli_query($conn,$train_exist) or trigger_error(mysql_error.$train_exist);
+            $sql    = "SELECT * FROM trains WHERE Train_no = '$train_num' and date= '$train_date' ";
+            $result =  mysqli_query($conn,$sql) or trigger_error(mysql_error.$sql);
             
-            if(mysqli_num_rows($res) < 1)
+            if(mysqli_num_rows($result) < 1)
             {
                     echo " .... LOGIN TRY  ....";
                     $_SESSION['error'] = "1";
@@ -47,19 +47,14 @@
                 $sql="SELECT * FROM trains WHERE Train_no='$train_num' and date='$train_date' and avail_sl >='$passenger_num' ";
                 $result=mysqli_query($conn,$sql) or trigger_error(mysql_error.$sql);
 
-                if(mysqli_num_rows($result) < 1)
-                {
-                    echo " .... LOGIN TRY  ....";
-                    $_SESSION['error'] = "1";
-                    header("location:../index.php");
-                }
             }
 
             if(mysqli_num_rows($result) < 1)
             {
                 echo " .... LOGIN TRY  ....";
                 $_SESSION['error'] = "1";
-                header("location:../index.php");
+                header("location: ticket_unavailable.php");
+                exit();
             }
 
             $tbl_name = "bookings";
@@ -89,7 +84,7 @@
             //echo $cur_pnr ;
 
             $localvar = $passenger_num;
-            echo $localvar;
+            //echo $localvar;
             $tbl_name = "ticket";
 
             if($coach =="AC"){
@@ -131,14 +126,14 @@
                     $temp = ($cur_ac )% 6;
                     $temp1= $cur_ac + 1;
                     $temp2 = ($cur_ac)/18 + 1;
-                    echo $cur_pnr;
-                    echo $name1;
-                    echo $temp;
+                    //echo $cur_pnr;
+                    //echo $name1;
+                    //echo $temp;
                     $sql = "INSERT INTO ticket (PNR,Name, Age, Gender,Coach_type, seat_type, coach_no, seat_no)
                     VALUES ('$cur_pnr','$name1','$age1','$gender1','AC','$AC_sitting[$temp]','$temp2','$temp1')";
                     $result=mysqli_query($conn,$sql);
-                    $row = mysqli_fetch_array($result);
-                    echo $row[0];
+                    //$row = mysqli_fetch_array($result);
+                    //echo $row[0];
 
                     $cur_ac++;
                     $localvar--;
@@ -223,7 +218,7 @@
                     $temp = ($cur_sl )% 8;
                     $temp1= $cur_sl + 1;
                     $temp2 = ($cur_sl + 1)/24 + 1;
-                    $sql = "INSERT INTO ticket
+                    $sql = "INSERT INTO ticket (PNR,Name, Age, Gender,Coach_type, seat_type, coach_no, seat_no)
                     VALUES ('$cur_pnr','$name1','$age1','$gender1','SL','$SL_sitting[$temp]','$temp2','$temp1')";
                     $result=mysqli_query($conn,$sql);
                     $cur_sl++;
@@ -237,7 +232,7 @@
                     $temp = ($cur_sl )% 8;
                     $temp1= $cur_sl + 1;
                     $temp2 = ($cur_sl + 1)/24 + 1;
-                    $sql = "INSERT INTO ticket 
+                    $sql = "INSERT INTO ticket (PNR,Name, Age, Gender,Coach_type, seat_type, coach_no, seat_no)
                     VALUES ('$cur_pnr','$name2','$age2','$gender2','SL','$SL_sitting[$temp]','$temp2','$temp1')";
                     $result=mysqli_query($conn,$sql);
                     $cur_sl++;
@@ -251,7 +246,7 @@
                     $temp = ($cur_sl )% 8;
                     $temp1= $cur_sl + 1;
                     $temp2 = ($cur_sl + 1)/24 + 1;
-                    $sql = "INSERT INTO ticket 
+                    $sql = "INSERT INTO ticket (PNR,Name, Age, Gender,Coach_type, seat_type, coach_no, seat_no)
                     VALUES ('$cur_pnr','$name3','$age3','$gender3','SL','$SL_sitting[$temp]','$temp2','$temp1')";
                     $result=mysqli_query($conn,$sql);
                     $cur_sl++;
@@ -265,7 +260,7 @@
                     $temp = ($cur_sl )% 8;
                     $temp1= $cur_sl + 1;
                     $temp2 = ($cur_sl + 1)/24 + 1;
-                    $sql = "INSERT INTO ticket 
+                    $sql = "INSERT INTO ticket (PNR,Name, Age, Gender,Coach_type, seat_type, coach_no, seat_no)
                     VALUES ('$cur_pnr','$name4','$age4','$gender4','SL','$SL_sitting[$temp]','$temp2','$temp1')";
                     $result=mysqli_query($conn,$sql);
                     $cur_sl++;
@@ -279,14 +274,16 @@
                     $temp = ($cur_sl )% 8;
                     $temp1= $cur_sl + 1;
                     $temp2 = ($cur_sl + 1)/24 + 1;
-                    $sql = "INSERT INTO ticket
+                    $sql = "INSERT INTO ticket(PNR,Name, Age, Gender,Coach_type, seat_type, coach_no, seat_no)
                     VALUES ('$cur_pnr','$name5','$age5','$gender5','SL','$SL_sitting[$temp]','$temp2','$temp1')";
                     $result=mysqli_query($conn,$sql);
                     $cur_sl++;
                     $localvar--;
                 }
             }
-            echo "Your Current PNR IS :  ".$cur_pnr;
+            //echo "Your Current PNR IS :  ".$cur_pnr;
+            $_SESSION['pnr'] = $cur_pnr;
+            header("location:../admin/pnr.php");
         }
 
         if(isset($_POST["Logout"])){
@@ -322,7 +319,40 @@
             <input type="submit" value="Submit" name="Submit">
         </form>
 
+        <script> var today = new Date();
         
+        
+            today.setDate(today.getDate() );
+            var maxi = today;
+            var dd = today.getDate() ;
+            var mm = today.getMonth()+1; //January is 0!
+            var yyyy = today.getFullYear();
+            if(dd<10){
+                    dd='0'+dd
+                } 
+                if(mm<10){
+                    mm='0'+mm
+                } 
+
+            today = yyyy+'-'+mm+'-'+dd; 
+            document.getElementById("train_date").setAttribute("min", today);
+            
+            maxi.setDate(maxi.getDate() + 60);
+            dd = maxi.getDate() ;
+            mm = maxi.getMonth()+1; //January is 0!
+            yyyy = maxi.getFullYear();
+            if(dd<10){
+                    dd='0'+dd
+                } 
+                if(mm<10){
+                    mm='0'+mm
+                } 
+
+            maxi = yyyy+'-'+mm+'-'+dd; 
+
+            //document.getElementById("train_date").setAttribute("max", maxi);
+
+        </script>
 
         <form action="booknow.php" method = "post">
             <input type="submit" value="Logout" name="Logout">

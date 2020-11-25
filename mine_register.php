@@ -2,7 +2,7 @@
     include('header.php');
 ?>
 <?php 
- require '../dbconnect.php';
+ require 'dbconnect.php';
 
 function test_input($data) {
 	$data = trim($data);
@@ -32,7 +32,7 @@ if(isset($_POST['submit']))
      $sql="INSERT INTO user(Username,password,Credit_card,Address)
      VALUES ('$username','$password','$credit','$address')";
      $result=mysqli_query($conn,$sql);
-	header("location:../user/sign_success.php");
+	header("location: sign_success.php");
 } 
 
 ?>
@@ -158,7 +158,7 @@ if(isset($_POST['submit']))
 				</form>
 				
 			  </div>
-<?php include('../footer.php'); ?>
+<?php include('footer.php'); ?>
  
 
        

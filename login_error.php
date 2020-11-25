@@ -5,6 +5,6 @@
 ?>
 	
 
-    <h1>Train Does not exist. Please view schedule. </h1>
+    <h1> Invalid Username or Password. </h1>
 </body>
 </html>

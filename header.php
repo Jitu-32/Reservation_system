@@ -11,9 +11,11 @@
 	<div class = "navbar">
 		<ul>
 			<li><a href="index.php">Home</a></li>
-			<li><a href="admin/login.php">Admin</a></li>
-			<li><a href="user/login.php">User</a></li>
-			<li><a href="user/mine_register.php">SignUp</a></li>
+			<li><a href="admin_login.php">Admin</a></li>
+			<li><a href="user_login.php">User</a></li>
+			<li><a href="mine_register.php">SignUp</a></li>
 			<li><a href="">About</a></li>
 		</ul>
 	</div>
+
+	

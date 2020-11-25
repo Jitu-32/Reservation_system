@@ -1,12 +1,13 @@
 <?php
+    session_start();
     include('header.php');
 ?>
     <!-- Above code is same as index.php 
         Starting the code for admin login
     -->
 <?php
-    session_start();
-    include("../dbconnect.php");
+    
+    include('dbconnect.php');
 
     if(isset($_POST["Submit"])){
         $uname=$_POST['username'];
@@ -29,13 +30,13 @@
             $_SESSION['name'] = $uname; 
             echo " ....   LOGIN  ....";
             echo $_SESSION['name'];
-            header("location:admin_home.php");
+            header("location:admin/admin_home.php");
         }
     }
 ?>
 
 <div class="forms">
-    <form action="login.php" method="post">
+    <form action="admin_login.php" method="post">
         User Name : <input type="text" name="username" placeholder="Enter username"><br>
         Password  :  <input type="password" name="password" placeholder="Enter password"><br>
         <input type="submit" value="Submit" name="Submit">
