@@ -1,22 +1,5 @@
 <?php
-$left = 0;
-$passengers = 0;
 
-$name=$_POST['name'];
-$age=$_POST['age'];
-$sex=$_POST['sex'];
-$aadhar=$_POST['aadhar'];
-if(!empty($name) && (empty($age) || empty($aadhar))) $left++;
-if(!empty($age) && (empty($name) || empty($aadhar))) $left++;
-if(!empty($aadhar) && (empty($name) || empty($age))) $left++;
-
-if(!empty($name) && !empty($age) && !empty($aadhar)) $passengers++;
-
-if($left>0 || $seats_left<$passengers) // PROMPT ERROR
-
-?>
-
-<?php
 session_start();
 require('firstimport.php');
 if(isset($_SESSION['name'])){}
@@ -66,7 +49,7 @@ $AC_sitting = array("LB","LB","UB","UB","SL","SU");
 $SL_sitting = array("LB","MB","UB","LB","MB","UB","SL","SU");
 
 if($seat=="AC") {
-	
+
 	$seat_no = $coach_cnt*18 - $value + 1;
 	$coach_no = ceil($value/18)+1-$coach_cnt;
 	$seat_type = $AC_sitting[($seat_no-1)%6];

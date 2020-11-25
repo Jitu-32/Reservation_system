@@ -1,5 +1,5 @@
 <?php
-    include('header.php');
+    include('../header.php');
 ?>
     <!-- Above code is same as index.php 
         Starting the code for admin login
