@@ -299,23 +299,35 @@
         <form action="booknow.php" method="post">
             Train Number : <input type="number" name="train_no" required placeholder = "Enter train number"><br>
             Train Date   : <input type="date" name="train_date"  id = "train_date" required placeholder = "Boarding Date"> <br>
-            No. of Passengers : <input type="number" name="P_num" placeholder = "Enter no. of passengers"> <br>
-            Coach Preferences : <input type="text" name="train_coach" placeholder = "Enter coach AC or Sleeper"> <br><br>
-            Passenger1 Name : <input type="text" name="name1" placeholder = "Enter name"><br>
-            Passenger1 Age : <input type="number" name="age1" placeholder = "Enter Age"><br>
-            Passenger1 Gender : <input type="text" name="gender1" placeholder = "Male or Female"><br><br>
-            Passenger2 Name : <input type="text" name="name2" placeholder = "Enter name"><br>
-            Passenger2 Age : <input type="number" name="age2" placeholder = "Enter Age"><br>
-            Passenger2 Gender : <input type="text" name="gender2" placeholder = "Male or Female"><br><br>
-            Passenger3 Name : <input type="text" name="name3" placeholder = "Enter name"><br>
-            Passenger3 Age : <input type="number" name="age3" placeholder = "Enter Age"><br>
-            Passenger3 Gender : <input type="text" name="gender3" placeholder = "Male or Female"><br><br>
-            Passenger4 Name : <input type="text" name="name4" placeholder = "Enter name"><br>
-            Passenger4 Age : <input type="number" name="age4" placeholder = "Enter Age"><br>
-            Passenger4 Gender : <input type="text" name="gender4" placeholder = "Male or Female"><br><br>
-            Passenger5 Name : <input type="text" name="name5" placeholder = "Enter name"><br>
-            Passenger5 Age : <input type="number" name="age5" placeholder = "Enter Age"><br>
-            Passenger5 Gender : <input type="text" name="gender5" placeholder = "Male or Female"><br><br>
+            Coach Preferences : <input type="text" name="train_coach" placeholder = "Enter coach AC or Sleeper"> <br>
+            No. of Passengers : <input type="number" class = "numb" name="P_num" placeholder = "Enter no. of passengers  "> <br>
+
+            <div class="p1">
+                Passenger1 Name : <input type="text" name="name1" placeholder = "Enter name"><br>
+                Passenger1 Age : <input type="number" name="age1" placeholder = "Enter Age"><br>
+                Passenger1 Gender : <input type="text" name="gender1" placeholder = "Male or Female"><br><br>
+            </div>
+            <div class="p2">
+                Passenger2 Name : <input type="text" name="name2" placeholder = "Enter name"><br>
+                Passenger2 Age : <input type="number" name="age2" placeholder = "Enter Age"><br>
+                Passenger2 Gender : <input type="text" name="gender2" placeholder = "Male or Female"><br><br>
+            </div>
+            <div class="p3">
+                Passenger3 Name : <input type="text" name="name3" placeholder = "Enter name"><br>
+                Passenger3 Age : <input type="number" name="age3" placeholder = "Enter Age"><br>
+                Passenger3 Gender : <input type="text" name="gender3" placeholder = "Male or Female"><br><br>
+            </div>
+            <div class="p4">
+                Passenger4 Name : <input type="text" name="name4" placeholder = "Enter name"><br>
+                Passenger4 Age : <input type="number" name="age4" placeholder = "Enter Age"><br>
+                Passenger4 Gender : <input type="text" name="gender4" placeholder = "Male or Female"><br><br>
+            </div>
+            <div class="p5">
+                Passenger5 Name : <input type="text" name="name5" placeholder = "Enter name"><br>
+                Passenger5 Age : <input type="number" name="age5" placeholder = "Enter Age"><br>
+                Passenger5 Gender : <input type="text" name="gender5" placeholder = "Male or Female"><br><br>
+            </div>
+            
             <input type="submit" value="Submit" name="Submit">
         </form>
 
@@ -351,6 +363,46 @@
             maxi = yyyy+'-'+mm+'-'+dd; 
 
             //document.getElementById("train_date").setAttribute("max", maxi);
+
+        </script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <script>
+            $(".p1").hide();
+            $(".p2").hide()
+            $(".p3").hide()
+            $(".p4").hide()
+            $(".p5").hide()
+
+            $(".numb").on('change',function(){
+                var new_value = $('.numb').val();
+                if(new_value==1){
+                    $(".p1").show()
+                }
+                else if(new_value==2){
+                    $(".p1").show()
+                    $(".p2").show()
+                }
+                else if(new_value==3){
+                    $(".p1").show()
+                    $(".p2").show()
+                    $(".p3").show()
+                }
+                else if(new_value==4){
+                    $(".p1").show()
+                    $(".p2").show()
+                    $(".p3").show()
+                    $(".p4").show()
+                }
+                else if(new_value==5){
+                    $(".p1").show()
+                    $(".p2").show()
+                    $(".p3").show()
+                    $(".p4").show()
+                    $(".p5").show()
+                }
+            });
 
         </script>
 
