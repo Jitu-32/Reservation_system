@@ -294,14 +294,19 @@
         }
 
     ?>
-
+<!-- <input type="number" select id="pp" class = "numb" name="P_num" placeholder = "Enter no. of passengers  "> <br> -->
+<!-- <input type="text" name="train_coach" placeholder = "Enter coach AC or Sleeper"> <br> -->
     <div class="forms">
         <form action="booknow.php" method="post">
             Train Number : <input type="number" name="train_no" required placeholder = "Enter train number"><br>
             Train Date   : <input type="date" name="train_date"  id = "train_date" required placeholder = "Boarding Date"> <br>
-            Coach Preferences : <input type="text" name="train_coach" placeholder = "Enter coach AC or Sleeper"> <br>
-            No. of Passengers : <input type="number" class = "numb" name="P_num" placeholder = "Enter no. of passengers  "> <br>
-
+            Coach Preferences : 
+            <select id="cp" name="train_coach">
+                <option value= "AC"> AC </option>
+                <option value= "SL"> SL </option>
+            </select> <br>
+            No. of Passengers : <input type="number" select id="pp" class = "numb" name="P_num" placeholder = "Enter no. of passengers  " min="1" max="5"> 
+            (Between 1 to 5) <br>
             <div class="p1">
                 Passenger1 Name : <input type="text" name="name1" placeholder = "Enter name"><br>
                 Passenger1 Age : <input type="number" name="age1" placeholder = "Enter Age"><br>

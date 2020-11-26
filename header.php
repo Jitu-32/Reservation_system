@@ -14,7 +14,7 @@
 			<li><a href="admin_login.php">Admin</a></li>
 			<li><a href="user_login.php">User</a></li>
 			<li><a href="mine_register.php">SignUp</a></li>
-			<li><a href="">About</a></li>
+			<li><a href="about.php">About</a></li>
 		</ul>
 	</div>
 

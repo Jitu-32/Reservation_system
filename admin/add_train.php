@@ -31,6 +31,7 @@
         }
         else {
         echo "Error: " . $sql . "<br>" . $conn->error;
+            header("location: train_add_error.php");
         }
         $conn->close();
     }

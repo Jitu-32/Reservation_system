@@ -1,6 +1,11 @@
   
 <?php include('header.php'); ?>
-			 
+             
+                        <div class="about-section">
+                                <h1>User Home</h1>
+                                <!-- <p>This is a course project.</p>
+                                <p>IIT Ropar</p> -->
+                            </div>
              <div class="col-md-12 menu mycss">
            
                        <div class="list-group homelist">
@@ -27,6 +32,10 @@
                        }
                    ?>
            </div>
+
+
            
                              </div>
+
+                             
 <?php include('footer.php'); ?>
