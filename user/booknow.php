@@ -27,6 +27,7 @@
                     echo " .... LOGIN TRY  ....";
                     $_SESSION['error'] = "1";
                     header("location: train_not_exist.php");
+                    exit();
             }
 
 
@@ -54,6 +55,7 @@
                 echo " .... LOGIN TRY  ....";
                 $_SESSION['error'] = "1";
                 header("location: ticket_unavailable.php");
+                exit();
             }
 
             $tbl_name = "bookings";
